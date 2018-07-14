@@ -17,10 +17,11 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 
-[//]: # (Image References)
+[./data/]: # (Image References for Training)
+[./data/]: # (Image References for Pridiction and Top5)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
+[test.p]: ./data/test.p "Training Data"
+[valid.p]: ./data/valid.p "Validation Data"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
