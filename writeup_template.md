@@ -29,7 +29,22 @@ The goals / steps of this project are the following:
 [image1-8]: ./result/training/8.png "Training Data"
 [image1-9]: ./result/training/9.png "Training Data"
 
-[image2]: ./data/valid.p "Validation Data"
+[image2-00]: ./result/preprocessing/0_0.png "Training Data"
+[image2-01]: ./result/preprocessing/0_1.png "Gray Data"
+[image2-02]: ./result/preprocessing/0_2.png "Normalization Data"
+[image2-10]: ./result/preprocessing/1_0.png "Training Data"
+[image2-11]: ./result/preprocessing/1_1.png "Gray Data"
+[image2-12]: ./result/preprocessing/1_2.png "Normalization Data"
+[image2-20]: ./result/preprocessing/2_0.png "Training Data"
+[image2-21]: ./result/preprocessing/2_1.png "Gray Data"
+[image2-22]: ./result/preprocessing/2_2.png "Normalization Data"
+[image2-30]: ./result/preprocessing/3_0.png "Training Data"
+[image2-31]: ./result/preprocessing/3_1.png "Gray Data"
+[image2-32]: ./result/preprocessing/3_2.png "Normalization Data"
+[image2-40]: ./result/preprocessing/4_0.png "Training Data"
+[image2-41]: ./result/preprocessing/4_1.png "Gray Data"
+[image2-42]: ./result/preprocessing/4_2.png "Normalization Data"
+
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
@@ -64,71 +79,142 @@ signs data set:
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-![alt text][image1, image1-1, image1-2, image1-3, image1-4]
+![alt text][image1]![alt text][image1-1]![alt text][image1-2]![alt text][image1-3]![alt text][image1-4]
+![alt text][image1-5]![alt text][image1-6]![alt text][image1-7]![alt text][image1-8]![alt text][image1-9]
 
 ### Design and Test a Model Architecture
 
-#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+#### 1. Describe how you preprocessed the image data.
+I chose two techniques to get improved recognition result.
+1. Converting to grayscale
+ - Conversion helps us to reduce computation and algorithms
+ 
+2. Normalization
+ - normalization avoids the influense of high frequency noise and very low noise.
 
-As a first step, I decided to convert the images to grayscale because ...
+Here is an example of a traffic sign image before and after grayscaling and after normalization.
 
-Here is an example of a traffic sign image before and after grayscaling.
+![alt text][image2-00]![alt text][image2-01]![alt text][image2-02]
+![alt text][image2-10]![alt text][image2-11]![alt text][image2-12]
+![alt text][image2-20]![alt text][image2-21]![alt text][image2-22]
+![alt text][image2-30]![alt text][image2-31]![alt text][image2-32]
+![alt text][image2-40]![alt text][image2-41]![alt text][image2-42]
 
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
+As a last step, I normalized the image data because this can avoid the influence of high frequency noise and very low noise. Actually, I get the different result(reduced the performance as -2%) when I exclude this technique.
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-My final model consisted of the following layers:
-
-| Layer         		|     Description	        					| 
+My first model consitsted of the following layers:
+| Layer   1      		|     Description	   Convolutional     					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
- 
+| Input         		| 32x32x1 gray & normalized image   							| 
+| Convolution 1   	| 1x1 stride, same padding, outputs 28x28x12 	|
+| RELU 1					|												|
+| Max pooling	 1   	| 2x2 stride,  outputs 14x14x12 				|
 
+| Layer   2      		|     Description	   Convolutional     					| 
+| Input         		| 14x14x12 image   							| 
+| Convolution 2	    | 2x2 stride, outputs 10x10x16   									|
+| RELU 1					|												|
+| Max pooling	 1   	| 2x2 stride,  outputs 5x5x25 				|
+
+| Flatten	 1   	| inputs 5x5x25,  outputs 625 				|
+
+| Layer   3      		|     Description	   Dropout & Fully Connected.    					| 
+| Input         		| 625 image   							| 
+| Fully Connected 1	    | outputs 300   									|
+
+| Layer   4      		|     Description	   Fully Connected.    					| 
+| Input         		| 300 image   							| 
+| Fully Connected 2	    | outputs 100   									|
+
+| Layer   5      		|     Description	   Fully Connected.    					| 
+| Input         		| 100 image   							| 
+| Fully Connected 2	    | outputs 43   									| 
+
+My final model consisted of the following layers:
+| Layer   1      		|     Description	   Convolutional     					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 32x32x1 gray & normalized image   							| 
+| Convolution 1   	| 1x1 stride, same padding, outputs 28x28x12 	|
+| RELU 1					|												|
+| Max pooling	 1   	| 2x2 stride,  outputs 14x14x12 				|
+
+| Layer   2      		|     Description	   Convolutional     					| 
+| Input         		| 14x14x12 image   							| 
+| Convolution 2	    | 1x1 stride, outputs 10x10x16   									|
+| RELU 1					|												|
+| Max pooling	 1   	| 2x2 stride,  outputs 5x5x16 				|
+
+| Flatten	 1   	| inputs 5x5x16,  outputs 400 				|
+
+| Layer   3      		|     Description	   Dropout & Fully Connected.    					| 
+| Input         		| 400 image   							| 
+| Fully Connected 1	    | outputs 200   									|
+
+| Layer   4      		|     Description	   Fully Connected.    					| 
+| Input         		| 200 image   							| 
+| Fully Connected 2	    | outputs 100   									|
+
+| Layer   5      		|     Description	   Fully Connected.    					| 
+| Input         		| 100 image   							| 
+| Fully Connected 2	    | outputs 43   									| 
+
+I used the model like Lenet for the first time.
+I got the result of 0.91 on average.
+I modified the model to enhance the performance over 0.93.
+I finalized got the model upperside.
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+To train the model, I used an such as optimizer like below :
+batch size = 32
+epochs = 10
+learning rate = 0.001
+
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+EPOCH 1/10 ...
+Validation Accuracy = 0.901
+EPOCH 2/10 ...
+Validation Accuracy = 0.949
+EPOCH 3/10 ...
+Validation Accuracy = 0.965
+EPOCH 4/10 ...
+Validation Accuracy = 0.973
+EPOCH 5/10 ...
+Validation Accuracy = 0.982
+EPOCH 6/10 ...
+Validation Accuracy = 0.984
+EPOCH 7/10 ...
+Validation Accuracy = 0.982
+EPOCH 8/10 ...
+Validation Accuracy = 0.988
+EPOCH 9/10 ...
+Validation Accuracy = 0.989
+EPOCH 10/10 ...
+Validation Accuracy = 0.988
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+* validation set accuracy of 0.956
+* test set accuracy of 0.9377672208931742
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+If an iterative approach was chosen: 
+ I chode the first architecture of Lenet but I cannot get the accuracy of 0.93 over.
+ So, I modified the paramaters to improve the performace up.
+ First, I forcused on pre-processing. I missed the normalization. It makes the performace lower about -2 or -3 percents. So I found that normalization is essential.
+ 
+ Actually, EPOCH is important factor to get the performace, but I cannot wait the total time for calculation. So I fixed the EPOCH to just 10.
+ 
+ To up the performace of 0.93, I modified the parameters in layers because lenet algorithm's performace is near to 0.93 but test procedure get the below 0.93.
+ I tuend the paramaters of layer2's depth from 25 to 16 and after layer 3, I reduce the size in half.
+ 
+ Finally, I got the performance of 0.937 on test case.
+ 
+ Of course, I think it's not the optimized result but I had the several time of test and I checked the even if it has the result the lowest but it's over than 0.93.
  
 
 ### Test a Model on New Images
