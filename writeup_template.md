@@ -45,22 +45,17 @@ The goals / steps of this project are the following:
 [image2-41]: ./result/preprocessing/4_1.png "Gray Data"
 [image2-42]: ./result/preprocessing/4_2.png "Normalization Data"
 
-[image3-0]: ./result/testmodel/0.jpg "My data"
-[image3-1]: ./result/testmodel/1.jpg "My data"
-[image3-2]: ./result/testmodel/2.jpg "My data"
-[image3-3]: ./result/testmodel/3.jpg "My data"
-[image3-4]: ./result/testmodel/4.jpg "My data"
-[image3-5]: ./result/testmodel/5.jpg "My data"
-[image3-6]: ./result/testmodel/6.jpg "My data"
-[image3-7]: ./result/testmodel/7.jpg "My data"
-[image3-8]: ./result/testmodel/8.jpg "My data"
-[image3-9]: ./result/testmodel/9.jpg "My data"
+[image3-0]: ./result/testmodel/0.png "My data"
+[image3-1]: ./result/testmodel/1.png "My data"
+[image3-2]: ./result/testmodel/2.png "My data"
+[image3-3]: ./result/testmodel/3.png "My data"
+[image3-4]: ./result/testmodel/4.png "My data"
+[image3-5]: ./result/testmodel/5.png "My data"
+[image3-6]: ./result/testmodel/6.png "My data"
+[image3-7]: ./result/testmodel/7.png "My data"
+[image3-8]: ./result/testmodel/8.png "My data"
+[image3-9]: ./result/testmodel/9.png "My data"
 
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -189,28 +184,39 @@ learning rate = 0.001
 My final model results were:
 * training set accuracy of ?
 EPOCH 1/10 ...
-Validation Accuracy = 0.901
-EPOCH 2/10 ...
-Validation Accuracy = 0.949
-EPOCH 3/10 ...
-Validation Accuracy = 0.965
-EPOCH 4/10 ...
-Validation Accuracy = 0.973
-EPOCH 5/10 ...
-Validation Accuracy = 0.982
-EPOCH 6/10 ...
-Validation Accuracy = 0.984
-EPOCH 7/10 ...
-Validation Accuracy = 0.982
-EPOCH 8/10 ...
-Validation Accuracy = 0.988
-EPOCH 9/10 ...
-Validation Accuracy = 0.989
-EPOCH 10/10 ...
-Validation Accuracy = 0.988
+Validation Accuracy = 0.910
 
-* validation set accuracy of 0.956
-* test set accuracy of 0.9377672208931742
+EPOCH 2/10 ...
+Validation Accuracy = 0.947
+
+EPOCH 3/10 ...
+Validation Accuracy = 0.968
+
+EPOCH 4/10 ...
+Validation Accuracy = 0.970
+
+EPOCH 5/10 ...
+Validation Accuracy = 0.981
+
+EPOCH 6/10 ...
+Validation Accuracy = 0.983
+
+EPOCH 7/10 ...
+Validation Accuracy = 0.986
+
+EPOCH 8/10 ...
+Validation Accuracy = 0.991
+
+EPOCH 9/10 ...
+Validation Accuracy = 0.992
+
+EPOCH 10/10 ...
+Validation Accuracy = 0.987
+
+File saved
+
+Validation Accuracy: 0.954
+Test Accuracy:  0.9346793349357417
 
 If an iterative approach was chosen: 
  I chode the first architecture of Lenet but I cannot get the accuracy of 0.93 over.
@@ -222,7 +228,7 @@ If an iterative approach was chosen:
  To up the performace of 0.93, I modified the parameters in layers because lenet algorithm's performace is near to 0.93 but test procedure get the below 0.93.
  I tuend the paramaters of layer2's depth from 25 to 16 and after layer 3, I reduce the size in half.
  
- Finally, I got the performance of 0.937 on test case.
+ Finally, I got the performance of 0.934 on test case.
  
  Of course, I think it's not the optimized result but I had the several time of test and I checked the even if it has the result the lowest but it's over than 0.93.
  
@@ -249,14 +255,8 @@ Here are the results of the prediction:
 | Traffic signals 		| 7.09e-22 											|
 | Roundabout mandatory  		| 2.24e-23					 				|
 
-| Image		 Vehicles over 3.5 metric tons prohibited 		      |     Prediction	 0.82     					| 
-| Vehicles over 3.5 metric tons prohibited      		|  0.82   									| 
-| Ebd if bi oassubg      		|  0.167   									| 
-| Priority road     		| 0.013 										|
-| Roundabout mandatory  		| 0.00059 											|
-| No passing  		| 1.06e-05 					 				|
 
-I wrote the results of just 2. You can see the result the html files others.
+I wrote the results of just 1. You can see the result the html files others.
 The model was able to correctly guess 10 of the 10 traffic signs, which gives an accuracy of 100%.
 In fact, I tried several times I got the result of 8 ~ 10. It depends on try and errors.
 
@@ -265,17 +265,17 @@ In fact, I tried several times I got the result of 8 ~ 10. It depends on try and
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 For the first image, the model is relatively sure that this is a stop sign (probability of 1.0), and the image does contain a stop sign. The top five soft max probabilities were
 
-| Probability         	|     Prediction	   1.0     					| 
+| Probability         	|     Prediction	   0.8     					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1.0         			| Yield   									| 
-| .82     				| Vehicles over 3.5 metric tons prohibited 										|
+| 1.0     				| End of no passing 										|
 | 1.0       			| Slippery road											|
-| .998      			| Roundabout mandatory					 				|
+| 1.0        			| Go straight or left					 				|
 | 1.0       		    | Ahead only      							|
-| 1.0       		    | Bumpy road      							|
+| 0.999       		    | Bumpy road      							|
 | 1.0       		    | General caution     							|
 | 1.0       		    | Stop      							|
-| 0.633       		    | Speed limit (100km/.h)      							|
+| 0.905       		    | Speed limit (100km/.h)      							|
 | 1.0       		    | No entry      							|
 
 
