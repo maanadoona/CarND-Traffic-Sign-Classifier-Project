@@ -18,7 +18,17 @@ The goals / steps of this project are the following:
 [./data/]: # (Image References for Training)
 [./mydata/]: # (Image References for Pridiction and Top5)
 
-[image1]: ./result/training/1.png "Training Data"
+[image1]: ./result/training/0.png "Training Data"
+[image1-1]: ./result/training/1.png "Training Data"
+[image1-2]: ./result/training/2.png "Training Data"
+[image1-3]: ./result/training/3.png "Training Data"
+[image1-4]: ./result/training/4.png "Training Data"
+[image1-5]: ./result/training/5.png "Training Data"
+[image1-6]: ./result/training/6.png "Training Data"
+[image1-7]: ./result/training/7.png "Training Data"
+[image1-8]: ./result/training/8.png "Training Data"
+[image1-9]: ./result/training/9.png "Training Data"
+
 [image2]: ./data/valid.p "Validation Data"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
@@ -54,7 +64,7 @@ signs data set:
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-![alt text][image1]
+![alt text][image1, image1-1, image1-2, image1-3, image1-4]
 
 ### Design and Test a Model Architecture
 
