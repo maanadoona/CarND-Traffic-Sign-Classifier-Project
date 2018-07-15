@@ -45,7 +45,17 @@ The goals / steps of this project are the following:
 [image2-41]: ./result/preprocessing/4_1.png "Gray Data"
 [image2-42]: ./result/preprocessing/4_2.png "Normalization Data"
 
-[image3]: ./examples/random_noise.jpg "Random Noise"
+[image3-0]: ./result/testmodel/0.jpg "My data"
+[image3-1]: ./result/testmodel/1.jpg "My data"
+[image3-2]: ./result/testmodel/2.jpg "My data"
+[image3-3]: ./result/testmodel/3.jpg "My data"
+[image3-4]: ./result/testmodel/4.jpg "My data"
+[image3-5]: ./result/testmodel/5.jpg "My data"
+[image3-6]: ./result/testmodel/6.jpg "My data"
+[image3-7]: ./result/testmodel/7.jpg "My data"
+[image3-8]: ./result/testmodel/8.jpg "My data"
+[image3-9]: ./result/testmodel/9.jpg "My data"
+
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
@@ -223,8 +233,8 @@ If an iterative approach was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image3-0]![alt text][image3-1]![alt text][image3-2]![alt text][image3-3]![alt text][image3-4]
+![alt text][image3-5]![alt text][image3-6]![alt text][image3-7]![alt text][image3-8]![alt text][image3-9]
 
 The first image might be difficult to classify because ...
 
@@ -232,33 +242,42 @@ The first image might be difficult to classify because ...
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Image		 Yield 		      |     Prediction	 1.0     					| 
+| Yield      		|  1.0   									| 
+| Priotiry road      		|  0.947e-21   									| 
+| Road work     		| 1.24e-21 										|
+| Traffic signals 		| 7.09e-22 											|
+| Roundabout mandatory  		| 2.24e-23					 				|
 
+| Image		 Vehicles over 3.5 metric tons prohibited 		      |     Prediction	 0.82     					| 
+| Vehicles over 3.5 metric tons prohibited      		|  0.82   									| 
+| Ebd if bi oassubg      		|  0.167   									| 
+| Priority road     		| 0.013 										|
+| Roundabout mandatory  		| 0.00059 											|
+| No passing  		| 1.06e-05 					 				|
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+I wrote the results of just 2. You can see the result the html files others.
+The model was able to correctly guess 10 of the 10 traffic signs, which gives an accuracy of 100%.
+In fact, I tried several times I got the result of 8 ~ 10. It depends on try and errors.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+For the first image, the model is relatively sure that this is a stop sign (probability of 1.0), and the image does contain a stop sign. The top five soft max probabilities were
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
+| Probability         	|     Prediction	   1.0     					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.0         			| Yield   									| 
+| .82     				| Vehicles over 3.5 metric tons prohibited 										|
+| 1.0       			| Slippery road											|
+| .998      			| Roundabout mandatory					 				|
+| 1.0       		    | Ahead only      							|
+| 1.0       		    | Bumpy road      							|
+| 1.0       		    | General caution     							|
+| 1.0       		    | Stop      							|
+| 0.633       		    | Speed limit (100km/.h)      							|
+| 1.0       		    | No entry      							|
 
-
-For the second image ... 
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
